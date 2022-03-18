@@ -1,11 +1,8 @@
 FROM python:3.6-alpine
 
 ENV PACKAGES="\
-    zlib-dev \
-    jpeg-dev \
-    # libjpeg-dev \
-    # zlib1g-dev \
-    # libjpeg  \
+       
+ 
     # dumb-init \
     # musl \
     # libc6-compat \
@@ -16,11 +13,10 @@ ENV PACKAGES="\
     ca-certificates \
     # freetype \
     # libgfortran \
-    # libgcc \
+    # 
     # libstdc++ \
     # openblas \
-    # tcl \
-    # tk \
+    # 
     # libssl1.0 \
     "
 
@@ -41,9 +37,14 @@ ENV PYTHON_PACKAGES="\
    # nltk \
     " 
 
-RUN apk --update add libxml2-dev libxslt-dev libffi-dev gcc musl-dev libgcc openssl-dev curl
-RUN apk add jpeg-dev zlib-dev freetype-dev lcms2-dev openjpeg-dev tiff-dev tk-dev tcl-dev
+RUN apk --update add libxml2-dev libxslt-dev libffi-dev gcc musl-dev libgcc openssl-dev curl libstdc++  
+RUN apk add jpeg-dev zlib-dev freetype-dev lcms2-dev openjpeg-dev tiff-dev tk-dev tcl-dev libssl1.0 openblas libgfortran  libc6-compat dumb-init musl linux-headers bash git
 RUN pip install Pillow
+RUN pip install numpy
+RUN pip install matplotlib
+RUN pip install scipy
+RUN pip install scikit-learn
+RUN pip install pandas
 
 # RUN apk add --no-cache --virtual build-dependencies python3 \
 #    && apk add --virtual build-runtime \
