@@ -3,6 +3,8 @@ FROM alpine:latest
 ENV PACKAGES="\
     zlib-dev \
     jpeg-dev \
+    libjpeg-dev \
+    zlib1g-dev \
     libjpeg  \
     dumb-init \
     musl \
