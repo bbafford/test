@@ -1,6 +1,9 @@
 FROM alpine:latest
 
 ENV PACKAGES="\
+    zlib-dev \
+    jpeg-dev \
+    libjpeg  \
     dumb-init \
     musl \
     libc6-compat \
@@ -27,6 +30,7 @@ ENV PACKAGES="\
 #   * pandas: library providing high-performance, easy-to-use data structures and data analysis tools
 #   * nltk: suite of libraries and programs for symbolic and statistical natural language processing for English
 ENV PYTHON_PACKAGES="\
+    pillow \
     numpy \
     matplotlib \
     scipy \
