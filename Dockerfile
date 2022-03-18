@@ -1,27 +1,27 @@
-FROM alpine:latest
+FROM python:3.6-alpine
 
 ENV PACKAGES="\
     zlib-dev \
     jpeg-dev \
-    libjpeg-dev \
-    zlib1g-dev \
-    libjpeg  \
-    dumb-init \
-    musl \
-    libc6-compat \
-    linux-headers \
-    build-base \
+    # libjpeg-dev \
+    # zlib1g-dev \
+    # libjpeg  \
+    # dumb-init \
+    # musl \
+    # libc6-compat \
+    # linux-headers \
+    # build-base \
     bash \
     git \
     ca-certificates \
-    freetype \
-    libgfortran \
-    libgcc \
-    libstdc++ \
-    openblas \
-    tcl \
-    tk \
-    libssl1.0 \
+    # freetype \
+    # libgfortran \
+    # libgcc \
+    # libstdc++ \
+    # openblas \
+    # tcl \
+    # tk \
+    # libssl1.0 \
     "
 
 # PYTHON DATA SCIENCE PACKAGES
@@ -33,28 +33,32 @@ ENV PACKAGES="\
 #   * nltk: suite of libraries and programs for symbolic and statistical natural language processing for English
 ENV PYTHON_PACKAGES="\
     pillow \
-    numpy \
-    matplotlib \
-    scipy \
-    scikit-learn \
-    pandas \
-    nltk \
+   # numpy \
+   # matplotlib \
+   # scipy \
+   # scikit-learn \
+   # pandas \
+   # nltk \
     " 
 
-RUN apk add --no-cache --virtual build-dependencies python3 \
-    && apk add --virtual build-runtime \
-    build-base python3-dev openblas-dev freetype-dev pkgconfig gfortran \
-    && ln -s /usr/include/locale.h /usr/include/xlocale.h \
-    && python3 -m ensurepip \
-    && rm -r /usr/lib/python*/ensurepip \
-    && pip3 install --upgrade pip setuptools \
-    && ln -sf /usr/bin/python3 /usr/bin/python \
-    && ln -sf pip3 /usr/bin/pip \
-    && rm -r /root/.cache \
-    && pip install --no-cache-dir $PYTHON_PACKAGES \
-    && apk del build-runtime \
-    && apk add --no-cache --virtual build-dependencies $PACKAGES \
-    && rm -rf /var/cache/apk/*
+RUN apk --update add libxml2-dev libxslt-dev libffi-dev gcc musl-dev libgcc openssl-dev curl
+RUN apk add jpeg-dev zlib-dev freetype-dev lcms2-dev openjpeg-dev tiff-dev tk-dev tcl-dev
+RUN pip install Pillow
+
+# RUN apk add --no-cache --virtual build-dependencies python3 \
+#    && apk add --virtual build-runtime \
+#    build-base python3-dev openblas-dev freetype-dev pkgconfig gfortran \
+#    && ln -s /usr/include/locale.h /usr/include/xlocale.h \
+#    && python3 -m ensurepip \
+#    && rm -r /usr/lib/python*/ensurepip \
+#    && pip3 install --upgrade pip setuptools \
+#    && ln -sf /usr/bin/python3 /usr/bin/python \
+#    && ln -sf pip3 /usr/bin/pip \
+#    && rm -r /root/.cache \
+#    && pip install --no-cache-dir $PYTHON_PACKAGES \
+#    && apk del build-runtime \
+#    && apk add --no-cache --virtual build-dependencies $PACKAGES \
+#    && rm -rf /var/cache/apk/*
 
 #WORKDIR  /app
 
