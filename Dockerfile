@@ -41,8 +41,8 @@ ENV PYTHON_PACKAGES="\
 #RUN apk add jpeg-dev zlib-dev freetype-dev lcms2-dev openjpeg-dev tiff-dev tk-dev tcl-dev  openblas libgfortran  libc6-compat dumb-init musl linux-headers bash git
 RUN pip install Pillow
 RUN pip install numpy
-# RUN pip install matplotlib
-#RUN pip install scipy
+RUN pip install matplotlib
+RUN pip install scipy
 RUN pip install scikit-learn
 RUN pip install pandas
 
