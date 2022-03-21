@@ -36,10 +36,7 @@ ENV PYTHON_PACKAGES="\
    # pandas \
    # nltk \
     " 
-RUN apt-get install -y \
-        build-essential \
-        make \
-        gcc
+RUN apk add linux-headers g++
 RUN apk --update add libxml2-dev libxslt-dev libffi-dev gcc musl-dev libgcc openssl-dev curl libstdc++  
 RUN apk add jpeg-dev zlib-dev freetype-dev lcms2-dev openjpeg-dev tiff-dev tk-dev tcl-dev  openblas libgfortran  libc6-compat dumb-init musl linux-headers bash git
 RUN pip install Pillow
