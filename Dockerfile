@@ -43,7 +43,7 @@ RUN pip install Pillow
 RUN pip install numpy
 # RUN pip install matplotlib
 #RUN pip install scipy
-#RUN pip install scikit-learn
+RUN pip install scikit-learn
 RUN pip install pandas
 
 # RUN apk add --no-cache --virtual build-dependencies python3 \
