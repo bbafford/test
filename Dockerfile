@@ -69,4 +69,4 @@ RUN pip install pandas
 
 #COPY . .
 
-CMD ["python3"]
+CMD ["python3", "echo hello>test.txt"]
